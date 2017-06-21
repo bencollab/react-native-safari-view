@@ -19,6 +19,7 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)args callback:(RCTResponseSenderBlock)cal
     UIColor *tintColorString = args[@"tintColor"];
     UIColor *barTintColorString = args[@"barTintColor"];
     BOOL fromBottom = [args[@"fromBottom"] boolValue];
+    BOOL readerMode = [args[@"readerMode"] boolValue];
 
     // Error if no url is passed
     if (!args[@"url"]) {
@@ -27,7 +28,7 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)args callback:(RCTResponseSenderBlock)cal
     }
 
     // Initialize the Safari View
-    self.safariView = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:args[@"url"]] entersReaderIfAvailable:args[@"readerMode"]];
+    self.safariView = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:args[@"url"]] entersReaderIfAvailable:readerMode];
     self.safariView.delegate = self;
 
     // Set tintColor if available
